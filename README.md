@@ -3,4 +3,4 @@
 Auteur: Jean-Denis Giguère
 
 
-[Révsion sur les matrices](revision_matrices.nb.html)
+[Révsion sur les matrices](revision_matrices.html)
