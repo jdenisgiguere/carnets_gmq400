@@ -4,7 +4,13 @@ author: "Jean-Denis Giguère"
 output:
   html_document: default
   html_notebook: default
+params:
+  tangle: TRUE
 ---
+
+```{r echo=FALSE, results='hide'}
+require(knitr)
+```
 
 d'après l'annexe 1 de O'Sullivan and Unwin (2010)
 
@@ -296,4 +302,7 @@ $$\textbf{AS}$$
 print(a %*% s)
 ```
 
-
+  
+```{r echo=FALSE, results='hide'}
+purl('revision_matrices.Rmd')
+```
