@@ -207,18 +207,28 @@ lon &lt;- -71.89889 # sanctuaire de Beauvoir - longitude</code></pre>
 <p><span class="math display">\[A = \{a_i\} = \{1, 2, 3, 4\}\]</span></p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMSArIDIgKyAzICsgNFxuXG4jIERhbnMgbGUgY29kZSBzb3VyY2UsIG9uIGdhcmRlcmEgbGEgbGV0dHJlIG1hanVzY3VsZSBwb3VyIGxlcyBmb25jdGlvblxuYSA8LSBjKDEsMiwzLDQpXG5zdW0oYSlcblxuIyBQbHVzIHVzdWVsXG5hIDwtIHNlcSg0KVxuc3VtKGEpXG5cbmBgYCJ9 -->
-<pre class="r"><code>1 + 2 + 3 + 4
-
-# Dans le code source, on gardera la lettre majuscule pour les fonction
-a &lt;- c(1,2,3,4)
-sum(a)
-
-# Plus usuel
-a &lt;- seq(4)
-sum(a)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMSArIDIgKyAzICsgNFxuYGBgIn0= -->
+<pre class="r"><code>1 + 2 + 3 + 4</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEwXG4ifQ== -->
+<pre><code>[1] 10</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBEYW5zIGxlIGNvZGUgc291cmNlLCBvbiBnYXJkZXJhIGxhIGxldHRyZSBtYWp1c2N1bGUgcG91ciBsZXMgZm9uY3Rpb25cbmEgPC0gYygxLDIsMyw0KVxuc3VtKGEpXG5gYGAifQ== -->
+<pre class="r"><code># Dans le code source, on gardera la lettre majuscule pour les fonction
+a &lt;- c(1,2,3,4)
+sum(a)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEwXG4ifQ== -->
+<pre><code>[1] 10</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBQbHVzIHVzdWVsXG5hIDwtIHNlcSg0KVxuc3VtKGEpXG5gYGAifQ== -->
+<pre class="r"><code># Plus usuel
+a &lt;- seq(4)
+sum(a)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEwXG4ifQ== -->
+<pre><code>[1] 10</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -230,6 +240,9 @@ sum(a)
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtKGFeMilcbmBgYCJ9 -->
 <pre class="r"><code>sum(a^2)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDMwXG4ifQ== -->
+<pre><code>[1] 30</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -256,6 +269,11 @@ sum(a)
 a &lt;- matrix (c(3, 7, 9, 11, 2, -1), nrow=2, ncol=3)
 print(a)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXVxuWzEsXSAgICAzICAgIDkgICAgMlxuWzIsXSAgICA3ICAgMTEgICAtMVxuIn0= -->
+<pre><code>     [,1] [,2] [,3]
+[1,]    3    9    2
+[2,]    7   11   -1</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>On peut représenter les éléments de la matrice par un indice composé de deux nombre, le premier indique la rangée, le second la colonne.</p>
@@ -265,6 +283,9 @@ print(a)</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYVsyLDFdXG5gYGAifQ== -->
 <pre class="r"><code>a[2,1]</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDdcbiJ9 -->
+<pre><code>[1] 7</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -286,30 +307,81 @@ print(a)</code></pre>
 <h3>Addition et soustraction de matrice</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA8LSBtYXRyaXgoYygxLCAyLCAzLCA0KSwgbnJvdz0yLCBuY29sPTIpXG5wcmludChhKVxuYiA8LSBtYXRyaXgoYyg1LCA2LCA3LCA4KSwgbnJvdz0yLCBuY29sPTIpXG5wcmludChiKVxucHJpbnQoYSArIGIpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA8LSBtYXRyaXgoYygxLCAyLCAzLCA0KSwgbnJvdz0yLCBuY29sPTIpXG5wcmludChhKVxuYGBgIn0= -->
 <pre class="r"><code>a &lt;- matrix(c(1, 2, 3, 4), nrow=2, ncol=2)
-print(a)
-b &lt;- matrix(c(5, 6, 7, 8), nrow=2, ncol=2)
-print(b)
-print(a + b)</code></pre>
+print(a)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgMSAgICAzXG5bMixdICAgIDIgICAgNFxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    1    3
+[2,]    2    4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYiA8LSBtYXRyaXgoYyg1LCA2LCA3LCA4KSwgbnJvdz0yLCBuY29sPTIpXG5wcmludChiKVxuYGBgIn0= -->
+<pre class="r"><code>b &lt;- matrix(c(5, 6, 7, 8), nrow=2, ncol=2)
+print(b)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgNSAgICA3XG5bMixdICAgIDYgICAgOFxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    5    7
+[2,]    6    8</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoYSArIGIpXG5gYGAifQ== -->
+<pre class="r"><code>print(a + b)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgNiAgIDEwXG5bMixdICAgIDggICAxMlxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    6   10
+[2,]    8   12</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucy4xIDwtIG1hdHJpeChjKDEwLCAzKSwgbnJvdz0yLCBuY29sPTEpXG5wcmludChcInMuMTpcIilcbnByaW50KHMuMSlcbnMuMiA8LSBtYXRyaXgoYygxMywgNyksIG5yb3c9MiwgbmNvbD0xKVxucHJpbnQoXCJzLjI6XCIpXG5wcmludChzLjIpXG5cbnYgPC0gIHMuMiAtIHMuMVxuXG5wcmludChcInZcIilcbnByaW50KHYpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucy4xIDwtIG1hdHJpeChjKDEwLCAzKSwgbnJvdz0yLCBuY29sPTEpXG5wcmludChcInMuMTpcIilcbmBgYCJ9 -->
 <pre class="r"><code>s.1 &lt;- matrix(c(10, 3), nrow=2, ncol=1)
-print(&quot;s.1:&quot;)
-print(s.1)
-s.2 &lt;- matrix(c(13, 7), nrow=2, ncol=1)
-print(&quot;s.2:&quot;)
-print(s.2)
-
-v &lt;-  s.2 - s.1
-
-print(&quot;v&quot;)
-print(v)</code></pre>
+print(&quot;s.1:&quot;)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwicy4xOlwiXG4ifQ== -->
+<pre><code>[1] &quot;s.1:&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQocy4xKVxuYGBgIn0= -->
+<pre class="r"><code>print(s.1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdXG5bMSxdICAgMTBcblsyLF0gICAgM1xuIn0= -->
+<pre><code>     [,1]
+[1,]   10
+[2,]    3</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucy4yIDwtIG1hdHJpeChjKDEzLCA3KSwgbnJvdz0yLCBuY29sPTEpXG5wcmludChcInMuMjpcIilcbmBgYCJ9 -->
+<pre class="r"><code>s.2 &lt;- matrix(c(13, 7), nrow=2, ncol=1)
+print(&quot;s.2:&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwicy4yOlwiXG4ifQ== -->
+<pre><code>[1] &quot;s.2:&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQocy4yKVxuYGBgIn0= -->
+<pre class="r"><code>print(s.2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdXG5bMSxdICAgMTNcblsyLF0gICAgN1xuIn0= -->
+<pre><code>     [,1]
+[1,]   13
+[2,]    7</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudiA8LSAgcy4yIC0gcy4xXG5wcmludChcInZcIilcbmBgYCJ9 -->
+<pre class="r"><code>v &lt;-  s.2 - s.1
+print(&quot;v&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwidlwiXG4ifQ== -->
+<pre><code>[1] &quot;v&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQodilcbmBgYCJ9 -->
+<pre class="r"><code>print(v)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdXG5bMSxdICAgIDNcblsyLF0gICAgNFxuIn0= -->
+<pre><code>     [,1]
+[1,]    3
+[2,]    4</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="produit-scalaire" class="section level4">
@@ -319,6 +391,10 @@ print(v)</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXMudmVjdG9yKHMuMSkgJSolIGFzLnZlY3RvcihzLjIpXG5gYGAifQ== -->
 <pre class="r"><code>as.vector(s.1) %*% as.vector(s.2)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdXG5bMSxdICAxNTFcbiJ9 -->
+<pre><code>     [,1]
+[1,]  151</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -330,6 +406,9 @@ print(v)</code></pre>
 <pre class="r"><code>d &lt;- sqrt(sum(v^2))
 print(d)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDVcbiJ9 -->
+<pre><code>[1] 5</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>ou avec le produit scalaire</p>
@@ -340,6 +419,10 @@ print(d)</code></pre>
 d &lt;- sqrt(v %*% v)
 print(d)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdXG5bMSxdICAgIDVcbiJ9 -->
+<pre><code>     [,1]
+[1,]    5</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -348,12 +431,25 @@ print(d)</code></pre>
 <h3>Multiplication de matrice</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA8LSBtYXRyaXggKGMoMywgMSwgLTIsIDUsIDIsIC00KSwgbnJvdz0yLCBuY29sPTMpXG5wcmludChhKVxuYiA8LSBtYXRyaXggKGMoNCwgLTMsIC01LCAxLCAtMiwgMSksIG5yb3c9MywgbmNvbD0yKVxucHJpbnQoYilcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA8LSBtYXRyaXggKGMoMywgMSwgLTIsIDUsIDIsIC00KSwgbnJvdz0yLCBuY29sPTMpXG5wcmludChhKVxuYGBgIn0= -->
 <pre class="r"><code>a &lt;- matrix (c(3, 1, -2, 5, 2, -4), nrow=2, ncol=3)
-print(a)
-b &lt;- matrix (c(4, -3, -5, 1, -2, 1), nrow=3, ncol=2)
+print(a)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXVxuWzEsXSAgICAzICAgLTIgICAgMlxuWzIsXSAgICAxICAgIDUgICAtNFxuIn0= -->
+<pre><code>     [,1] [,2] [,3]
+[1,]    3   -2    2
+[2,]    1    5   -4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYiA8LSBtYXRyaXggKGMoNCwgLTMsIC01LCAxLCAtMiwgMSksIG5yb3c9MywgbmNvbD0yKVxucHJpbnQoYilcbmBgYCJ9 -->
+<pre class="r"><code>b &lt;- matrix (c(4, -3, -5, 1, -2, 1), nrow=3, ncol=2)
 print(b)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgNCAgICAxXG5bMixdICAgLTMgICAtMlxuWzMsXSAgIC01ICAgIDFcbiJ9 -->
+<pre><code>     [,1] [,2]
+[1,]    4    1
+[2,]   -3   -2
+[3,]   -5    1</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p><span class="math display">\[\textbf{A}\textbf{B}\]</span></p>
@@ -362,6 +458,11 @@ print(b)</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSAlKiUgYlxuYGBgIn0= -->
 <pre class="r"><code>a %*% b</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgOCAgICA5XG5bMixdICAgIDkgIC0xM1xuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    8    9
+[2,]    9  -13</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p><span class="math display">\[\textbf{B}\textbf{A}\]</span></p>
@@ -370,18 +471,37 @@ print(b)</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYiAlKiUgYVxuYGBgIn0= -->
 <pre class="r"><code>b %*% a</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXVxuWzEsXSAgIDEzICAgLTMgICAgNFxuWzIsXSAgLTExICAgLTQgICAgMlxuWzMsXSAgLTE0ICAgMTUgIC0xNFxuIn0= -->
+<pre><code>     [,1] [,2] [,3]
+[1,]   13   -3    4
+[2,]  -11   -4    2
+[3,]  -14   15  -14</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="transpostion" class="section level3">
-<h3>Transpostion</h3>
+<div id="transposition" class="section level3">
+<h3>Transposition</h3>
 <p><span class="math display">\[A^T\]</span></p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoYSlcbnByaW50KHQoYSkpXG5gYGAifQ== -->
-<pre class="r"><code>print(a)
-print(t(a))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoYSlcbmBgYCJ9 -->
+<pre class="r"><code>print(a)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXVxuWzEsXSAgICAzICAgLTIgICAgMlxuWzIsXSAgICAxICAgIDUgICAtNFxuIn0= -->
+<pre><code>     [,1] [,2] [,3]
+[1,]    3   -2    2
+[2,]    1    5   -4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQodChhKSlcbmBgYCJ9 -->
+<pre class="r"><code>print(t(a))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgMyAgICAxXG5bMixdICAgLTIgICAgNVxuWzMsXSAgICAyICAgLTRcbiJ9 -->
+<pre><code>     [,1] [,2]
+[1,]    3    1
+[2,]   -2    5
+[3,]    2   -4</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -395,6 +515,11 @@ print(t(a))</code></pre>
 <pre class="r"><code>a &lt;- matrix(c(1,2,3,4), nrow=2, ncol=2)
 print(a)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgMSAgICAzXG5bMixdICAgIDIgICAgNFxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    1    3
+[2,]    2    4</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="la-matrice-identite-2-par-2" class="section level4">
@@ -410,6 +535,11 @@ print(a)</code></pre>
 <pre class="r"><code>a.inverse &lt;- solve(a)
 print(a.inverse)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAtMiAgMS41XG5bMixdICAgIDEgLTAuNVxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]   -2  1.5
+[2,]    1 -0.5</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -417,6 +547,11 @@ print(a.inverse)</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoYSAlKiUgYS5pbnZlcnNlKVxuYGBgIn0= -->
 <pre class="r"><code>print(a %*% a.inverse)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgMSAgICAwXG5bMixdICAgIDAgICAgMVxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    1    0
+[2,]    0    1</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -453,6 +588,11 @@ b.inverse &lt;- solve(b)</code></pre>
 <pre class="r"><code>x.y &lt;- b.inverse %*% matrix(c(11, -6), nrow=2, ncol=1)
 print(x.y)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdXG5bMSxdICAgIDFcblsyLF0gICAgMlxuIn0= -->
+<pre><code>     [,1]
+[1,]    1
+[2,]    2</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Donc <span class="math inline">\(x = 1\)</span> et <span class="math inline">\(y = 2\)</span>.</p>
@@ -466,10 +606,17 @@ print(x.y)</code></pre>
 \]</span></p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA8LSBtYXRyaXgoYygwLjYsIC0wLjgsIDAuOCwgMC42KSwgbnJvdz0yLCBuY29sPTIpXG5wcmludChhKVxucyA8LSBtYXRyaXgoYygzLCA0KSwgbnJvdz0yLCBuY29sPTEpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA8LSBtYXRyaXgoYygwLjYsIC0wLjgsIDAuOCwgMC42KSwgbnJvdz0yLCBuY29sPTIpXG5wcmludChhKVxuYGBgIn0= -->
 <pre class="r"><code>a &lt;- matrix(c(0.6, -0.8, 0.8, 0.6), nrow=2, ncol=2)
-print(a)
-s &lt;- matrix(c(3, 4), nrow=2, ncol=1)</code></pre>
+print(a)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gIDAuNiAgMC44XG5bMixdIC0wLjggIDAuNlxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]  0.6  0.8
+[2,] -0.8  0.6</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucyA8LSBtYXRyaXgoYygzLCA0KSwgbnJvdz0yLCBuY29sPTEpXG5gYGAifQ== -->
+<pre class="r"><code>s &lt;- matrix(c(3, 4), nrow=2, ncol=1)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -479,6 +626,11 @@ s &lt;- matrix(c(3, 4), nrow=2, ncol=1)</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoYSAlKiUgcylcbmBgYCJ9 -->
 <pre class="r"><code>print(a %*% s)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBbLDFdXG5bMSxdICA1LjAwMDAwMGUrMDBcblsyLF0gLTQuNDQwODkyZS0xNlxuIn0= -->
+<pre><code>              [,1]
+[1,]  5.000000e+00
+[2,] -4.440892e-16</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -494,6 +646,11 @@ s &lt;- matrix(c(3, 4), nrow=2, ncol=1)</code></pre>
 <pre class="r"><code>s &lt;- matrix(c(1,1,3,-2,0,5,-1,4,-2.5,-4), nrow=2, ncol=5)
 print(s)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXSBbLDRdIFssNV1cblsxLF0gICAgMSAgICAzICAgIDAgICAtMSAtMi41XG5bMixdICAgIDEgICAtMiAgICA1ICAgIDQgLTQuMFxuIn0= -->
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    0   -1 -2.5
+[2,]    1   -2    5    4 -4.0</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p><span class="math display">\[\textbf{AS}\]</span></p>
@@ -502,13 +659,18 @@ print(s)</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoYSAlKiUgcylcbmBgYCJ9 -->
 <pre class="r"><code>print(a %*% s)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXSBbLDRdIFssNV1cblsxLF0gIDEuNCAgMC4yICAgIDQgIDIuNiAtNC43XG5bMixdIC0wLjIgLTMuNiAgICAzICAzLjIgLTAuNFxuIn0= -->
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]  1.4  0.2    4  2.6 -4.7
+[2,] -0.2 -3.6    3  3.2 -0.4</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUmFwcGVsIHN1ciBsZXMgbWF0cmljZXMiCmF1dGhvcjogIkplYW4tRGVuaXMgR2lndcOocmUiCm91dHB1dDoKICBodG1sX2RvY3VtZW50OiBkZWZhdWx0CiAgaHRtbF9ub3RlYm9vazogZGVmYXVsdAotLS0KCmQnYXByw6hzIGwnYW5uZXhlIDEgZGUgTydTdWxsaXZhbiBhbmQgVW53aW4gKDIwMTApCgojIyMgTGVzIHZhcmlhYmxlcwoKT24gdXRpbGlzZSB1bmUgbGV0dHJlIG1pbnVzY3VsZToKCiogJGQkIGxhIGRpc3RhbmNlOwoqICR4JCBsJ2Fic2Npc3NlOwoqICR5JCBsJ29yZG9ubsOpZTsKKiAkXGxhbWJkYSQgbGEgbG9uZ2l0dWRlOwoqICRccGhpJCBsYSBsYXRpdHVkZTsKCgpgYGB7cn0KZCA8LSAxMDAuMCAjIDEwMC4wIG3DqHRyZXMKeCA8LSA3MjY2NjEgIyBzYW5jdHVhaXJlIGRlIEJlYXV2b2lyICAtIGFic2Npc3NlCnkgPC0gNTAzNzU1NCAjIHNhbmN0dWFpcmUgZGUgQmVhdXZvaXIgLSBvcmRvbm7DqWUKbGF0IDwtIDQ1LjQ1NDcyICMgc2FuY3R1YWlyZSBkZSBCZWF1dm9pciAtIGxhdGl0dWRlCmxvbiA8LSAtNzEuODk4ODkgIyBzYW5jdHVhaXJlIGRlIEJlYXV2b2lyIC0gbG9uZ2l0dWRlCmBgYAoKIyMjIExlcyBzb21tYXRpb25zCgojIyMjIyBMYSBzb21tZSBkZSAxIMOgIDQKCiQxICsgMiArIDMgKyA0JAoKb3UgCgokJFxzdW0gYV9pJCQKYXZlYwoKJCRBID0gXHthX2lcfSA9IFx7MSwgMiwgMywgNFx9JCQKCmBgYHtyfQoxICsgMiArIDMgKyA0CgojIERhbnMgbGUgY29kZSBzb3VyY2UsIG9uIGdhcmRlcmEgbGEgbGV0dHJlIG1hanVzY3VsZSBwb3VyIGxlcyBmb25jdGlvbgphIDwtIGMoMSwyLDMsNCkKc3VtKGEpCgojIFBsdXMgdXN1ZWwKYSA8LSBzZXEoNCkKc3VtKGEpCgpgYGAKCiMjIyMjIFNvbW1lIGRlcyBjYXJyw6lzCgokJFxzdW0gYV9pXjIkJAoKYGBge3J9CnN1bShhXjIpCmBgYAoKCiMjIyMjIERvdWJsZSBzb21tYXRpb24KCiQkIGMgPSBrIFxzdW1fe2k9MX1ebiBcc3VtX3tqPTF9Xm4gKHpfaSAtIHpfaileMiAkJAoKTCdpbXBsw6ltZW50YXRpb24gbidlc3QgcGFzIHRyaXZpYWxlIGRhbnMgUiwgb24geSByZXZpZW5kcmEuCgoKIyMjIE1hdHJpY2VzCgpNYXRyaWNlIGRlIGRldXggcmFuZ8OpZXMgZXQgdHJvaXMgY29sb25uZXMKCiQkClxtYXRoYmZ7QX0gPSBcYmVnaW57Ym1hdHJpeH0KMyAmIDkgJiAyIFxcCjcgJiAxMSAmIC0xClxlbmR7Ym1hdHJpeH0KJCQKCmBgYHtyfQojIERhbnMgbGUgY29kZSBzb3VyY2UsIG9uIHV0aWxpc2UgdG91am91cnMgbGEgbWludXNjdWxlIHBvdXIgdW5lIHZhcmlhYmxlIAojIExlcyB2YWxldXJzIHNvbnQgc2Fpc2llcyBwYXIgY29sb25uZSAKYSA8LSBtYXRyaXggKGMoMywgNywgOSwgMTEsIDIsIC0xKSwgbnJvdz0yLCBuY29sPTMpCnByaW50KGEpCmBgYAoKT24gcGV1dCByZXByw6lzZW50ZXIgbGVzIMOpbMOpbWVudHMgZGUgbGEgbWF0cmljZSBwYXIgdW4gaW5kaWNlIGNvbXBvc8OpIGRlIGRldXggbm9tYnJlLCBsZSBwcmVtaWVyIGluZGlxdWUgbGEgcmFuZ8OpZSwgbGUgc2Vjb25kIGxhIGNvbG9ubmUuCgokJCBhX3syMX0gPSA3JCQKYGBge3J9CmFbMiwxXQpgYGAKCiMjIyBWZWN0ZXVycwoKVW5lIG1hdHJpY2UgZCd1bmUgc2V1bGUgY29sb25uZS4KCiQkIFx0ZXh0YmZ7YX0gPSBcYmVnaW57Ym1hdHJpeH0gLTMgXFw0IFxlbmR7Ym1hdHJpeH0kJAoKYGBge3J9CmEgPC0gbWF0cml4KGMoLTMsIDQpLCBucm93PTIsIG5jb2w9MSkKYGBgCgoKVW4gdmVjdGV1ciBpbXBvcnRhbnQgOiBsYSBsb2NhbGlzYXRpb24gJHMkCgokJCBcdGV4dGJme3N9ID0gXGJlZ2lue2JtYXRyaXh9IHggXFx5IFxlbmR7Ym1hdHJpeH0kJAoKCiMjIyBBZGRpdGlvbiBldCBzb3VzdHJhY3Rpb24gZGUgbWF0cmljZQoKYGBge3J9CmEgPC0gbWF0cml4KGMoMSwgMiwgMywgNCksIG5yb3c9MiwgbmNvbD0yKQpwcmludChhKQpiIDwtIG1hdHJpeChjKDUsIDYsIDcsIDgpLCBucm93PTIsIG5jb2w9MikKcHJpbnQoYikKcHJpbnQoYSArIGIpCmBgYAoKYGBge3J9CnMuMSA8LSBtYXRyaXgoYygxMCwgMyksIG5yb3c9MiwgbmNvbD0xKQpwcmludCgicy4xOiIpCnByaW50KHMuMSkKcy4yIDwtIG1hdHJpeChjKDEzLCA3KSwgbnJvdz0yLCBuY29sPTEpCnByaW50KCJzLjI6IikKcHJpbnQocy4yKQoKdiA8LSAgcy4yIC0gcy4xCgpwcmludCgidiIpCnByaW50KHYpCmBgYAoKCiMjIyMgUHJvZHVpdCBzY2FsYWlyZQoKYGBge3J9CmFzLnZlY3RvcihzLjEpICUqJSBhcy52ZWN0b3Iocy4yKQpgYGAKCiMjIyMgTGEgbG9uZ3VldXIgZHUgZMOpcGxhY2VtZW50CgpgYGB7cn0KZCA8LSBzcXJ0KHN1bSh2XjIpKQpwcmludChkKQpgYGAKCm91IGF2ZWMgbGUgcHJvZHVpdCBzY2FsYWlyZQoKYGBge3J9CnYgPC0gYXMudmVjdG9yKHYpCmQgPC0gc3FydCh2ICUqJSB2KQpwcmludChkKQpgYGAKCgojIyMgTXVsdGlwbGljYXRpb24gZGUgbWF0cmljZQoKYGBge3J9CmEgPC0gbWF0cml4IChjKDMsIDEsIC0yLCA1LCAyLCAtNCksIG5yb3c9MiwgbmNvbD0zKQpwcmludChhKQpiIDwtIG1hdHJpeCAoYyg0LCAtMywgLTUsIDEsIC0yLCAxKSwgbnJvdz0zLCBuY29sPTIpCnByaW50KGIpCmBgYAoKJCRcdGV4dGJme0F9XHRleHRiZntCfSQkCgpgYGB7cn0KYSAlKiUgYgpgYGAKCgoKJCRcdGV4dGJme0J9XHRleHRiZntBfSQkCgpgYGB7cn0KYiAlKiUgYQpgYGAKCiMjIyBUcmFuc3Bvc3Rpb24KCiQkQV5UJCQKCmBgYHtyfQpwcmludChhKQpwcmludCh0KGEpKQpgYGAKCiMjIyBMYSBtYXRyaWNlIGlkZW50aXTDqSBldCBsYSBtYXRyaWNlIGludmVyc2UKCgokJCBcdGV4dGJme0lBfSA9IFx0ZXh0YmZ7QUl9IC0gXHRleHRiZntBfSAkJAoKJFx0ZXh0YmZ7QX0kIGRvaXQgw6p0cmUgdW5lIG1hdHJpY2UgY2FycsOpLiBQYXIgZXhlbXBsZQoKYGBge3J9CmEgPC0gbWF0cml4KGMoMSwyLDMsNCksIG5yb3c9MiwgbmNvbD0yKQpwcmludChhKQpgYGAKCgojIyMjIExhIG1hdHJpY2UgaWRlbnRpdMOpIDIgcGFyIDIKCiQkIFx0ZXh0YmZ7SX0gID0gXGJlZ2lue2JtYXRyaXh9IDEgJiAwIFxcIDAgJiAxIFxlbmR7Ym1hdHJpeH0kJAoKIyMjIyBEw6lmaW5pdGlvbiBkZSBsYSBtYXRyaWNlIGludmVyc2UgJEFeey0xfSQKCiQkIFx0ZXh0YmZ7QUF9XnstMX0gPSBcdGV4dGJme0F9XnstMX1cdGV4dGJme0F9ID0gXHRleHRiZntJfSQkIAoKYGBge3J9CmEuaW52ZXJzZSA8LSBzb2x2ZShhKQpwcmludChhLmludmVyc2UpCmBgYAoKYGBge3J9CnByaW50KGEgJSolIGEuaW52ZXJzZSkKYGBgCgoKIyMjIFLDqXNvbHV0aW9uIGQndW4gc3lzdMOobWUgZCfDqXF1YXRpb25zIGxpbsOpYWlyZXMKCiQkCjN4ICsgIDR5ID0gMTEgXFwKMnggLSA0IHkgID0gLTYKJCQKIHBldXQgcyfDqWNyaXJlIHNvdXMgZm9ybWUgbWF0cmljaWVsbGUKIAogJCQKIFxiZWdpbntibWF0cml4fSAzICYgNCBcXCAyICYgLTQgXGVuZHtibWF0cml4fSAgXGJlZ2lue2JtYXRyaXh9IHggXFwgeSBcZW5ke2JtYXRyaXh9ID0gIFxiZWdpbntibWF0cml4fSAxMSBcXCAtNiBcZW5ke2JtYXRyaXh9CiAkJAoKCmBgYHtyfQpiIDwtIG1hdHJpeChjKDMsMiw0LC00KSwgbnJvdz0yLCBuY29sPTIpCmIuaW52ZXJzZSA8LSBzb2x2ZShiKQpgYGAKCiAkJAogXGJlZ2lue2JtYXRyaXh9IDMgJiA0IFxcIDIgJiAtNCBcZW5ke2JtYXRyaXh9XnstMX0KIFxiZWdpbntibWF0cml4fSAzICYgNCBcXCAyICYgLTQgXGVuZHtibWF0cml4fSAgXGJlZ2lue2JtYXRyaXh9IHggXFwgeSBcZW5ke2JtYXRyaXh9IAogPSAgCiBcYmVnaW57Ym1hdHJpeH0gMyAmIDQgXFwgMiAmIC00IFxlbmR7Ym1hdHJpeH1eey0xfQogXGJlZ2lue2JtYXRyaXh9IDExIFxcIC02IFxlbmR7Ym1hdHJpeH0KID0KICBcYmVnaW57Ym1hdHJpeH0geCBcXCB5IFxlbmR7Ym1hdHJpeH0gCiAkJAoKYGBge3J9CngueSA8LSBiLmludmVyc2UgJSolIG1hdHJpeChjKDExLCAtNiksIG5yb3c9MiwgbmNvbD0xKQpwcmludCh4LnkpCmBgYAoKCkRvbmMgJHggPSAxJCBldCAkeSA9IDIkLgoKCiMjIyBSb3RhdGlvbiBkYW5zIGxlIHBsYW4KCiMjIyMgVW5lIHJvdGF0aW9uCgokJApcdGV4dGJme0F9ID0gXGJlZ2lue2JtYXRyaXh9IDAuNiAmIDAuOCBcXCAtMC44ICYgLTAuNiBcZW5ke2JtYXRyaXh9LCBcdGV4dGJme3N9ID0gXGJlZ2lue2JtYXRyaXh9IDMgXFwgNFxlbmR7Ym1hdHJpeH0KJCQKCmBgYHtyfQphIDwtIG1hdHJpeChjKDAuNiwgLTAuOCwgMC44LCAwLjYpLCBucm93PTIsIG5jb2w9MikKcHJpbnQoYSkKcyA8LSBtYXRyaXgoYygzLCA0KSwgbnJvdz0yLCBuY29sPTEpCmBgYAoKJCQgXHRleHRiZntBc30kJAoKYGBge3J9CnByaW50KGEgJSolIHMpCmBgYAoKCiMjIyMgQmVhdWNvdXAgZGUgcm90YXRpb25zCgokJApcdGV4dGJme1N9ID0gXGJlZ2lue2JtYXRyaXh9IDEgJiAzICYgMCAmIC0xICYgLTIuNSAgXFwKMSAmIC0yICYgNSAmIDQgJiAtNCBcZW5ke2JtYXRyaXh9CiQkCgpgYGB7cn0KcyA8LSBtYXRyaXgoYygxLDEsMywtMiwwLDUsLTEsNCwtMi41LC00KSwgbnJvdz0yLCBuY29sPTUpCnByaW50KHMpCmBgYAoKJCRcdGV4dGJme0FTfSQkCgpgYGB7cn0KcHJpbnQoYSAlKiUgcykKYGBgCgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUmFwcGVsIHN1ciBsZXMgbWF0cmljZXMiCmF1dGhvcjogIkplYW4tRGVuaXMgR2lndcOocmUiCm91dHB1dDoKICBodG1sX2RvY3VtZW50OiBkZWZhdWx0CiAgaHRtbF9ub3RlYm9vazogZGVmYXVsdAotLS0KCmQnYXByw6hzIGwnYW5uZXhlIDEgZGUgTydTdWxsaXZhbiBhbmQgVW53aW4gKDIwMTApCgojIyMgTGVzIHZhcmlhYmxlcwoKT24gdXRpbGlzZSB1bmUgbGV0dHJlIG1pbnVzY3VsZToKCiogJGQkIGxhIGRpc3RhbmNlOwoqICR4JCBsJ2Fic2Npc3NlOwoqICR5JCBsJ29yZG9ubsOpZTsKKiAkXGxhbWJkYSQgbGEgbG9uZ2l0dWRlOwoqICRccGhpJCBsYSBsYXRpdHVkZTsKCgpgYGB7cn0KZCA8LSAxMDAuMCAjIDEwMC4wIG3DqHRyZXMKeCA8LSA3MjY2NjEgIyBzYW5jdHVhaXJlIGRlIEJlYXV2b2lyICAtIGFic2Npc3NlCnkgPC0gNTAzNzU1NCAjIHNhbmN0dWFpcmUgZGUgQmVhdXZvaXIgLSBvcmRvbm7DqWUKbGF0IDwtIDQ1LjQ1NDcyICMgc2FuY3R1YWlyZSBkZSBCZWF1dm9pciAtIGxhdGl0dWRlCmxvbiA8LSAtNzEuODk4ODkgIyBzYW5jdHVhaXJlIGRlIEJlYXV2b2lyIC0gbG9uZ2l0dWRlCmBgYAoKIyMjIExlcyBzb21tYXRpb25zCgojIyMjIyBMYSBzb21tZSBkZSAxIMOgIDQKCiQxICsgMiArIDMgKyA0JAoKb3UgCgokJFxzdW0gYV9pJCQKYXZlYwoKJCRBID0gXHthX2lcfSA9IFx7MSwgMiwgMywgNFx9JCQKCmBgYHtyfQoxICsgMiArIDMgKyA0CgojIERhbnMgbGUgY29kZSBzb3VyY2UsIG9uIGdhcmRlcmEgbGEgbGV0dHJlIG1hanVzY3VsZSBwb3VyIGxlcyBmb25jdGlvbgphIDwtIGMoMSwyLDMsNCkKc3VtKGEpCgojIFBsdXMgdXN1ZWwKYSA8LSBzZXEoNCkKc3VtKGEpCgpgYGAKCiMjIyMjIFNvbW1lIGRlcyBjYXJyw6lzCgokJFxzdW0gYV9pXjIkJAoKYGBge3J9CnN1bShhXjIpCmBgYAoKCiMjIyMjIERvdWJsZSBzb21tYXRpb24KCiQkIGMgPSBrIFxzdW1fe2k9MX1ebiBcc3VtX3tqPTF9Xm4gKHpfaSAtIHpfaileMiAkJAoKTCdpbXBsw6ltZW50YXRpb24gbidlc3QgcGFzIHRyaXZpYWxlIGRhbnMgUiwgb24geSByZXZpZW5kcmEuCgoKIyMjIE1hdHJpY2VzCgpNYXRyaWNlIGRlIGRldXggcmFuZ8OpZXMgZXQgdHJvaXMgY29sb25uZXMKCiQkClxtYXRoYmZ7QX0gPSBcYmVnaW57Ym1hdHJpeH0KMyAmIDkgJiAyIFxcCjcgJiAxMSAmIC0xClxlbmR7Ym1hdHJpeH0KJCQKCmBgYHtyfQojIERhbnMgbGUgY29kZSBzb3VyY2UsIG9uIHV0aWxpc2UgdG91am91cnMgbGEgbWludXNjdWxlIHBvdXIgdW5lIHZhcmlhYmxlIAojIExlcyB2YWxldXJzIHNvbnQgc2Fpc2llcyBwYXIgY29sb25uZSAKYSA8LSBtYXRyaXggKGMoMywgNywgOSwgMTEsIDIsIC0xKSwgbnJvdz0yLCBuY29sPTMpCnByaW50KGEpCmBgYAoKT24gcGV1dCByZXByw6lzZW50ZXIgbGVzIMOpbMOpbWVudHMgZGUgbGEgbWF0cmljZSBwYXIgdW4gaW5kaWNlIGNvbXBvc8OpIGRlIGRldXggbm9tYnJlLCBsZSBwcmVtaWVyIGluZGlxdWUgbGEgcmFuZ8OpZSwgbGUgc2Vjb25kIGxhIGNvbG9ubmUuCgokJCBhX3syMX0gPSA3JCQKYGBge3J9CmFbMiwxXQpgYGAKCiMjIyBWZWN0ZXVycwoKVW5lIG1hdHJpY2UgZCd1bmUgc2V1bGUgY29sb25uZS4KCiQkIFx0ZXh0YmZ7YX0gPSBcYmVnaW57Ym1hdHJpeH0gLTMgXFw0IFxlbmR7Ym1hdHJpeH0kJAoKYGBge3J9CmEgPC0gbWF0cml4KGMoLTMsIDQpLCBucm93PTIsIG5jb2w9MSkKYGBgCgoKVW4gdmVjdGV1ciBpbXBvcnRhbnQgOiBsYSBsb2NhbGlzYXRpb24gJHMkCgokJCBcdGV4dGJme3N9ID0gXGJlZ2lue2JtYXRyaXh9IHggXFx5IFxlbmR7Ym1hdHJpeH0kJAoKCiMjIyBBZGRpdGlvbiBldCBzb3VzdHJhY3Rpb24gZGUgbWF0cmljZQoKYGBge3J9CmEgPC0gbWF0cml4KGMoMSwgMiwgMywgNCksIG5yb3c9MiwgbmNvbD0yKQpwcmludChhKQpiIDwtIG1hdHJpeChjKDUsIDYsIDcsIDgpLCBucm93PTIsIG5jb2w9MikKcHJpbnQoYikKcHJpbnQoYSArIGIpCmBgYAoKYGBge3J9CnMuMSA8LSBtYXRyaXgoYygxMCwgMyksIG5yb3c9MiwgbmNvbD0xKQpwcmludCgicy4xOiIpCnByaW50KHMuMSkKcy4yIDwtIG1hdHJpeChjKDEzLCA3KSwgbnJvdz0yLCBuY29sPTEpCnByaW50KCJzLjI6IikKcHJpbnQocy4yKQoKdiA8LSAgcy4yIC0gcy4xCgpwcmludCgidiIpCnByaW50KHYpCmBgYAoKCiMjIyMgUHJvZHVpdCBzY2FsYWlyZQoKYGBge3J9CmFzLnZlY3RvcihzLjEpICUqJSBhcy52ZWN0b3Iocy4yKQpgYGAKCiMjIyMgTGEgbG9uZ3VldXIgZHUgZMOpcGxhY2VtZW50CgpgYGB7cn0KZCA8LSBzcXJ0KHN1bSh2XjIpKQpwcmludChkKQpgYGAKCm91IGF2ZWMgbGUgcHJvZHVpdCBzY2FsYWlyZQoKYGBge3J9CnYgPC0gYXMudmVjdG9yKHYpCmQgPC0gc3FydCh2ICUqJSB2KQpwcmludChkKQpgYGAKCgojIyMgTXVsdGlwbGljYXRpb24gZGUgbWF0cmljZQoKYGBge3J9CmEgPC0gbWF0cml4IChjKDMsIDEsIC0yLCA1LCAyLCAtNCksIG5yb3c9MiwgbmNvbD0zKQpwcmludChhKQpiIDwtIG1hdHJpeCAoYyg0LCAtMywgLTUsIDEsIC0yLCAxKSwgbnJvdz0zLCBuY29sPTIpCnByaW50KGIpCmBgYAoKJCRcdGV4dGJme0F9XHRleHRiZntCfSQkCgpgYGB7cn0KYSAlKiUgYgpgYGAKCgoKJCRcdGV4dGJme0J9XHRleHRiZntBfSQkCgpgYGB7cn0KYiAlKiUgYQpgYGAKCiMjIyBUcmFuc3Bvc2l0aW9uCgokJEFeVCQkCgpgYGB7cn0KcHJpbnQoYSkKcHJpbnQodChhKSkKYGBgCgojIyMgTGEgbWF0cmljZSBpZGVudGl0w6kgZXQgbGEgbWF0cmljZSBpbnZlcnNlCgoKJCQgXHRleHRiZntJQX0gPSBcdGV4dGJme0FJfSAtIFx0ZXh0YmZ7QX0gJCQKCiRcdGV4dGJme0F9JCBkb2l0IMOqdHJlIHVuZSBtYXRyaWNlIGNhcnLDqS4gUGFyIGV4ZW1wbGUKCmBgYHtyfQphIDwtIG1hdHJpeChjKDEsMiwzLDQpLCBucm93PTIsIG5jb2w9MikKcHJpbnQoYSkKYGBgCgoKIyMjIyBMYSBtYXRyaWNlIGlkZW50aXTDqSAyIHBhciAyCgokJCBcdGV4dGJme0l9ICA9IFxiZWdpbntibWF0cml4fSAxICYgMCBcXCAwICYgMSBcZW5ke2JtYXRyaXh9JCQKCiMjIyMgRMOpZmluaXRpb24gZGUgbGEgbWF0cmljZSBpbnZlcnNlICRBXnstMX0kCgokJCBcdGV4dGJme0FBfV57LTF9ID0gXHRleHRiZntBfV57LTF9XHRleHRiZntBfSA9IFx0ZXh0YmZ7SX0kJCAKCmBgYHtyfQphLmludmVyc2UgPC0gc29sdmUoYSkKcHJpbnQoYS5pbnZlcnNlKQpgYGAKCmBgYHtyfQpwcmludChhICUqJSBhLmludmVyc2UpCmBgYAoKCiMjIyBSw6lzb2x1dGlvbiBkJ3VuIHN5c3TDqG1lIGQnw6lxdWF0aW9ucyBsaW7DqWFpcmVzCgokJAozeCArICA0eSA9IDExIFxcCjJ4IC0gNCB5ICA9IC02CiQkCiBwZXV0IHMnw6ljcmlyZSBzb3VzIGZvcm1lIG1hdHJpY2llbGxlCiAKICQkCiBcYmVnaW57Ym1hdHJpeH0gMyAmIDQgXFwgMiAmIC00IFxlbmR7Ym1hdHJpeH0gIFxiZWdpbntibWF0cml4fSB4IFxcIHkgXGVuZHtibWF0cml4fSA9ICBcYmVnaW57Ym1hdHJpeH0gMTEgXFwgLTYgXGVuZHtibWF0cml4fQogJCQKCgpgYGB7cn0KYiA8LSBtYXRyaXgoYygzLDIsNCwtNCksIG5yb3c9MiwgbmNvbD0yKQpiLmludmVyc2UgPC0gc29sdmUoYikKYGBgCgogJCQKIFxiZWdpbntibWF0cml4fSAzICYgNCBcXCAyICYgLTQgXGVuZHtibWF0cml4fV57LTF9CiBcYmVnaW57Ym1hdHJpeH0gMyAmIDQgXFwgMiAmIC00IFxlbmR7Ym1hdHJpeH0gIFxiZWdpbntibWF0cml4fSB4IFxcIHkgXGVuZHtibWF0cml4fSAKID0gIAogXGJlZ2lue2JtYXRyaXh9IDMgJiA0IFxcIDIgJiAtNCBcZW5ke2JtYXRyaXh9XnstMX0KIFxiZWdpbntibWF0cml4fSAxMSBcXCAtNiBcZW5ke2JtYXRyaXh9CiA9CiAgXGJlZ2lue2JtYXRyaXh9IHggXFwgeSBcZW5ke2JtYXRyaXh9IAogJCQKCmBgYHtyfQp4LnkgPC0gYi5pbnZlcnNlICUqJSBtYXRyaXgoYygxMSwgLTYpLCBucm93PTIsIG5jb2w9MSkKcHJpbnQoeC55KQpgYGAKCgpEb25jICR4ID0gMSQgZXQgJHkgPSAyJC4KCgojIyMgUm90YXRpb24gZGFucyBsZSBwbGFuCgojIyMjIFVuZSByb3RhdGlvbgoKJCQKXHRleHRiZntBfSA9IFxiZWdpbntibWF0cml4fSAwLjYgJiAwLjggXFwgLTAuOCAmIC0wLjYgXGVuZHtibWF0cml4fSwgXHRleHRiZntzfSA9IFxiZWdpbntibWF0cml4fSAzIFxcIDRcZW5ke2JtYXRyaXh9CiQkCgpgYGB7cn0KYSA8LSBtYXRyaXgoYygwLjYsIC0wLjgsIDAuOCwgMC42KSwgbnJvdz0yLCBuY29sPTIpCnByaW50KGEpCnMgPC0gbWF0cml4KGMoMywgNCksIG5yb3c9MiwgbmNvbD0xKQpgYGAKCiQkIFx0ZXh0YmZ7QXN9JCQKCmBgYHtyfQpwcmludChhICUqJSBzKQpgYGAKCgojIyMjIEJlYXVjb3VwIGRlIHJvdGF0aW9ucwoKJCQKXHRleHRiZntTfSA9IFxiZWdpbntibWF0cml4fSAxICYgMyAmIDAgJiAtMSAmIC0yLjUgIFxcCjEgJiAtMiAmIDUgJiA0ICYgLTQgXGVuZHtibWF0cml4fQokJAoKYGBge3J9CnMgPC0gbWF0cml4KGMoMSwxLDMsLTIsMCw1LC0xLDQsLTIuNSwtNCksIG5yb3c9MiwgbmNvbD01KQpwcmludChzKQpgYGAKCiQkXHRleHRiZntBU30kJAoKYGBge3J9CnByaW50KGEgJSolIHMpCmBgYAoKCg==</div>
 
 
 

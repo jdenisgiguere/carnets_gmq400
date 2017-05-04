@@ -180,7 +180,7 @@ $$\textbf{B}\textbf{A}$$
 b %*% a
 ```
 
-### Transpostion
+### Transposition
 
 $$A^T$$
 
