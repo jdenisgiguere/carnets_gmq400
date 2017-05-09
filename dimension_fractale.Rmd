@@ -1,0 +1,108 @@
+---
+title: "La dimension fractale"
+
+author: "Jean-Denis Giguère"
+
+output:
+  html_document: default
+  html_notebook: default
+---
+
+Exemple tiré d'O'Sullivan and Unwin (2010), pp. 13-14.
+
+```{r echo=FALSE, results='hide'}
+require(knitr)
+```
+
+
+```{r}
+require(ggplot2)
+```
+
+
+```{r}
+longueur.baton.km <- c(10, 5, 2.5)
+nombre.de.batons <- c(18, 52, 132)
+mesures.baton <- data.frame(longueur.baton.km, nombre.de.batons)
+print(mesures.baton)
+```
+
+```{r}
+print(mesures.baton$longueur.baton.km)
+print(mesures.baton$nombre.de.batons)
+```
+
+
+```{r}
+mesures.baton$longueur.km <- mesures.baton$longueur.baton.km * mesures.baton$nombre.de.batons
+print(mesures.baton$longueur.km)
+```
+
+### Représentation graphique du nombre de bâtons en fonction de sa longueur
+
+```{r}
+qplot(x = longueur.baton.km, nombre.de.batons, data = mesures.baton)
+```
+
+### Dimension fractale
+
+$$
+D = \frac{\log N_1 / N_2}{\log L_1 / L_2}
+$$
+
+Avec $N_1 = 18$, $N_2 = 52$, $L_1 = 10$ et $L_2 = 5$, on obtient:
+
+```{r}
+dim.fractale <- log(52.0 / 18.0) / log(10.0 / 5.0)
+print(dim.fractale)
+```
+
+C'est un valeur parmi plusieurs valeurs possibles. Est-ce qu'on peut estimer $D$ avec un modèle statistique?
+
+### Représenter la dimension fractale par la pente d'une droite
+
+Rappel : 
+
+$$ \log a/b = \log a - \log b $$
+
+$$
+D = \frac{\log N_1 / N_2}{\log L_1 / L_2} 
+= \frac{\log N_1 - \log N_2}{\log L_1 - \log L_2}
+$$
+
+
+
+
+```{r}
+qplot(longueur.baton.km, mesures.baton$nombre.de.batons, data = mesures.baton, log = 'xy')
+```
+
+```{r}
+qplot(mesures.baton$longueur.baton.km, mesures.baton$nombre.de.batons, log = 'xy') + geom_smooth(method = lm, se=FALSE)
+```
+
+
+Calculons l'équation de la droite de régression.
+Pour cela, il faut d'abord transformer les données.
+
+```{r}
+mesures.baton$log.longeur.baton.km <- log(mesures.baton$longueur.baton.km)
+mesures.baton$log.nombre.de.batons <- log(mesures.baton$nombre.de.batons)
+```
+
+Dans R, on représente une régression, ou plus généralement un modèle statistique avec l'opérateur ~.
+
+$$ y \sim x $$
+
+```{r}
+modele.dimension.fractale <- lm(log(nombre.de.batons) ~ log(longueur.baton.km), mesures.baton)
+print(modele.dimension.fractale)
+```
+
+```{r}
+summary(modele.dimension.fractale)
+```
+
+```{r echo=FALSE, results='hide'}
+purl('dimension_fractale.Rmd')
+```
