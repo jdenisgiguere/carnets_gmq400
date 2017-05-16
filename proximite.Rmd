@@ -1,0 +1,185 @@
+---
+title: "Les oeuvres  d'art public de Fleurimont"
+output:
+  html_notebook: default
+  html_document: default
+---
+
+Le 15 mai 2017, la Ville de Sherbrooke possédait une collection de 35 oeuvres d'art public. 
+Elles sont présentés dans un jeu de données R.
+
+```{r}
+load("geodata/oeuvres.fleurimont.RData")
+```
+
+On peut voir quelques informations descriptives sommaires sur le jeux de données avec la commande `summary`.
+
+```{r}
+summary(oeuvres.fleurimont)
+```
+
+
+Les coordonnées des oeuvres dans le Système de coordonnées planes du Québec (SCOPQ), fuseau 7 sont : 
+
+```{r}
+coordinates(oeuvres.fleurimont)
+```
+
+```{r}
+require(ggplot2)
+require(plotly)
+```
+
+
+```{r}
+gg.oeuvres <- ggplot(data = oeuvres.fleurimont@data) + geom_point(aes(x=coordinates(oeuvres.fleurimont)[,1], 
+                                                     y=coordinates(oeuvres.fleurimont)[,2],
+                                                     color=medium)) + xlab("x") + ylab("y")
+```
+
+```{r}
+ggplotly(gg.oeuvres)
+```
+
+
+### Distance entre les oeuvres
+
+```{r}
+matrice.distance <- spDists(oeuvres.fleurimont, oeuvres.fleurimont)
+print(matrice.distance)
+```
+`
+
+
+### Ouvres situées à moins de 500 mètres les unes des autres
+
+```{r}
+d.500.max <- matrice.distance < 500
+print(d.500.max)
+```
+
+La distance d'une oeuvre à elle-même n'est pas une information très riche, n'est-ce pas?
+
+```{r}
+diag(d.500.max) <- NA
+print(d.500.max)
+```
+
+
+## Adjacence
+
+`spdep` offre des fonctionnalités très intéressantes pour étudier l'adjacence.
+
+```{r}
+require(spdep)
+```
+
+
+### Les oeuvres situées à moins de 500 mètres sont adjacentes
+
+
+```{r}
+adj.d.500 <- dnearneigh(oeuvres.fleurimont, 0, 500)
+```
+
+Pour afficher sur notre graphique, les voisinages, nous aurons besoin de les convertir en `data.frame`.
+Nous utilisons une fonction proposée par Maxwell B. Joseph au http://mbjoseph.github.io/2015/06/15/nb_ggmap.html .
+
+```{r}
+nb2df <- function(nb, coords){
+  x <- coords[, 1]
+  y <- coords[, 2]
+  n <- length(nb)
+
+  cardnb <- card(nb)
+  i <- rep(1:n, cardnb)
+  j <- unlist(nb)
+  return(data.frame(x=x[i], xend=x[j],
+                    y=y[i], yend=y[j]))
+  }
+```
+
+
+```{r}
+adj.d.500.df <- nb2df(adj.d.500, coordinates(oeuvres.fleurimont))
+```
+
+```{r}
+gg.oeuvres.adj.d.500 <- gg.oeuvres + geom_segment(data = adj.d.500.df, aes(x=x, xend=xend, y=y, yend=yend), color="grey")
+```
+```{r}
+ggplotly(gg.oeuvres.adj.d.500)
+```
+
+
+### Les deux oeuvres les plus proches sont adjacentes
+
+```{r}
+nn.2 <- knearneigh(oeuvres.fleurimont, 2)
+adj.nn.2 <- knn2nb(nn.2, row.names=rownames(oeuvres.fleurimont))
+summary(adj.nn.2)
+```
+
+
+
+```{r}
+adj.nn.2.df <- nb2df(adj.nn.2, coordinates(oeuvres.fleurimont))
+```
+
+```{r}
+gg.oeuvres.adj.nn.2 <- gg.oeuvres + geom_segment(data = adj.nn.2.df, aes(x=x, xend=xend, y=y, yend=yend), color="grey")
+```
+```{r}
+ggplotly(gg.oeuvres.adj.nn.2)
+```
+
+## Le voisinage provient d'une triangulation
+
+```{r}
+adj.triangulation <- tri2nb(coordinates(oeuvres.fleurimont), row.names = rownames(oeuvres.fleurimont))
+adj.triangulation.df <- nb2df(adj.triangulation, coordinates(oeuvres.fleurimont))
+```
+
+```{r}
+gg.oeuvres.adj.triangulation <- gg.oeuvres + geom_segment(data = adj.triangulation.df, aes(x=x, xend=xend, y=y, yend=yend), color="grey")
+ggplotly(gg.oeuvres.adj.triangulation)
+```
+
+## Le voisinage est établi par la triangulation de Delaunay
+
+```{r}
+require(RANN)
+```
+
+
+```{r}
+adj.delaunay <- graph2nb(soi.graph(adj.triangulation, coordinates(oeuvres.fleurimont)), row.names = rownames(oeuvres.fleurimont))
+```
+
+```{r}
+adj.delaunay.df <- nb2df(adj.delaunay, coordinates(oeuvres.fleurimont))
+```
+
+```{r}
+gg.oeuvres.adj.triangulation <- gg.oeuvres + geom_segment(data = adj.delaunay.df, aes(x=x, xend=xend, y=y, yend=yend), color="grey")
+ggplotly(gg.oeuvres.adj.triangulation)
+```
+
+## Les polygones de proximité (Voronoï)
+
+```{r}
+require(deldir)
+```
+
+```{r}
+polygones.voronoi <- deldir(coordinates(oeuvres.fleurimont)[,1], coordinates(oeuvres.fleurimont)[,2])
+```
+```{r}
+gg.oeuvres.voronoi <- gg.oeuvres + geom_segment(aes(x=x1, y=y1, xend=x2, yend=y2), data = polygones.voronoi$dirsgs)
+ggplotly(gg.oeuvres.voronoi)
+```
+
+```{r echo=FALSE, results='hide'}
+require(knitr)
+purl("proximite.Rmd")
+```
