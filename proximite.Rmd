@@ -3,8 +3,8 @@ title: "Les oeuvres  d'art public de Fleurimont"
 author: "Jean-Denis Giguère"
 date: "16 mai 2017"
 output:
-  html_notebook: default
   html_document: default
+  html_notebook: default
 ---
 
 Le 15 mai 2017, la Ville de Sherbrooke possédait une collection de 35 oeuvres d'art public. 
@@ -131,6 +131,7 @@ summary(adj.nn.2)
 
 
 
+
 ```{r}
 adj.nn.2.df <- nb2df(adj.nn.2, coordinates(oeuvres.fleurimont))
 ```
@@ -138,6 +139,7 @@ adj.nn.2.df <- nb2df(adj.nn.2, coordinates(oeuvres.fleurimont))
 ```{r}
 gg.oeuvres.adj.nn.2 <- gg.oeuvres + geom_segment(data = adj.nn.2.df, aes(x=x, xend=xend, y=y, yend=yend), color="grey")
 ```
+
 ```{r}
 ggplotly(gg.oeuvres.adj.nn.2)
 ```
@@ -183,6 +185,7 @@ require(deldir)
 ```{r}
 polygones.voronoi <- deldir(coordinates(oeuvres.fleurimont)[,1], coordinates(oeuvres.fleurimont)[,2])
 ```
+
 ```{r}
 gg.oeuvres.voronoi <- gg.oeuvres + geom_segment(aes(x=x1, y=y1, xend=x2, yend=y2), data = polygones.voronoi$dirsgs)
 ggplotly(gg.oeuvres.voronoi)
