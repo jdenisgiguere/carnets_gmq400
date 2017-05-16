@@ -1,5 +1,7 @@
 ---
 title: "Les oeuvres  d'art public de Fleurimont"
+author: "Jean-Denis Giguère"
+date: "16 mai 2017"
 output:
   html_notebook: default
   html_document: default
@@ -16,6 +18,7 @@ On peut voir quelques informations descriptives sommaires sur le jeux de donnée
 
 ```{r}
 summary(oeuvres.fleurimont)
+attach(oeuvres.fleurimont@data)
 ```
 
 
@@ -23,6 +26,8 @@ Les coordonnées des oeuvres dans le Système de coordonnées planes du Québec 
 
 ```{r}
 coordinates(oeuvres.fleurimont)
+x <- coordinates(oeuvres.fleurimont)[,1]
+y <- coordinates(oeuvres.fleurimont)[,2]
 ```
 
 ```{r}
@@ -32,9 +37,13 @@ require(plotly)
 
 
 ```{r}
-gg.oeuvres <- ggplot(data = oeuvres.fleurimont@data) + geom_point(aes(x=coordinates(oeuvres.fleurimont)[,1], 
-                                                     y=coordinates(oeuvres.fleurimont)[,2],
-                                                     color=medium)) + xlab("x") + ylab("y")
+gg.oeuvres <- ggplot(data = oeuvres.fleurimont@data) + 
+  geom_point(aes(x=x, 
+                 y=y,
+                 text = paste(title, ' par ', author, ' (', year, ')'),
+                 color=medium)
+             ) + 
+  xlab("x") + ylab("y")
 ```
 
 ```{r}
@@ -79,7 +88,7 @@ require(spdep)
 
 
 ```{r}
-adj.d.500 <- dnearneigh(oeuvres.fleurimont, 0, 500)
+adj.d.500 <- dnearneigh(oeuvres.fleurimont, 0, 500, row.names = rownames(oeuvres.fleurimont))
 ```
 
 Pour afficher sur notre graphique, les voisinages, nous aurons besoin de les convertir en `data.frame`.
