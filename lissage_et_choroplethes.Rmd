@@ -1,0 +1,117 @@
+---
+title: "Lissage par une fênetre de moyenne mobile et choroplèthes"
+author: "Jean-Denis Giguère"
+date: "23 mai 2017"
+output:
+  html_document: default
+  html_notebook: default
+---
+
+## Lissage par une fenêtre de moyenne mobile
+
+```{r}
+if(! require("spatstat") ) {
+  install.packages("spatstat")
+  library(spatstat)
+}
+
+if(! require("raster") ) {
+  install.packages("raster")
+  library(raster)
+}
+```
+
+Nous utilisons le jeu de données `ants` du paquat spatstat
+```{r}
+data(ants)
+summary(ants)
+```
+
+```{r}
+plot(ants)
+```
+
+```{r}
+messor <- split(ants)$Messor
+plot(messor)
+```
+
+
+```{r}
+messor.smooth <- density(messor)
+print(messor.smooth)
+```
+
+```{r}
+plot(messor.smooth)
+```
+
+
+```{r}
+messor.sigma <- bw.diggle(messor)
+```
+
+```{r}
+messor.smooth <- density(messor, messor.sigma)
+print(messor.smooth)
+```
+
+```{r}
+plot(messor.smooth)
+```
+
+
+```{r}
+messor.smooth.raster <- raster(messor.smooth)
+```
+
+```{r}
+plot(messor.smooth.raster)
+points(messor)
+```
+
+## Choroplèthes
+
+```{r}
+if(! require("spdep") ) {
+  install.packages("spdep")
+  library(spdep)
+}
+
+if(! require("rgdal") ) {
+  install.packages("rgdal")
+  library(rgdal)
+}
+
+if(! require("ggplot2") ) {
+  install.packages("ggplot2")
+  library(ggplot2)
+}
+
+if(! require("plyr") ) {
+  install.packages("plyr")
+  library(plyr)
+}
+```
+
+
+```{r}
+nc_file <- system.file("etc/shapes/sids.shp", package = "spdep")[1]
+lCRS <- CRS("+proj=longlat +datum=NAD27")
+nc <- readOGR(nc_file)
+proj4string(nc) <- lCRS
+nc <- spTransform(nc, CRS("+init=epsg:3358"))
+nc@data$id <- rownames(nc@data)
+nc.fortify <- fortify(nc, region="id")
+nc.df <- join(nc.fortify, nc@data, by="id")
+```
+
+
+```{r}
+ggplot(nc.df) + aes(long,lat,group=group,fill=SID79/BIR79) + geom_polygon() + geom_path(color="white") + theme_minimal()
+```
+
+
+## Références
+
+Harkness, R.D. and Isham, V. (1983) A bivariate spatial point pattern of ants' nests. Applied Statistics 32, 293–303.
