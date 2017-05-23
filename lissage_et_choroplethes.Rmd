@@ -3,8 +3,8 @@ title: "Lissage par une fênetre de moyenne mobile et choroplèthes"
 author: "Jean-Denis Giguère"
 date: "23 mai 2017"
 output:
-  html_document: default
   html_notebook: default
+  html_document: default
 ---
 
 ## Lissage par une fenêtre de moyenne mobile
