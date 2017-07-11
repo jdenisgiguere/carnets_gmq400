@@ -1,0 +1,97 @@
+---
+title: "Statistiques locales"
+output: html_notebook
+---
+
+
+```{r, message=FALSE}
+if(! require("RColorBrewer") ) {
+  install.packages("RColorBrewer")
+  library(RColorBrewer)
+}
+if(! require("spdep") ) {
+  install.packages("spdep")
+  library(spdep)
+}
+if(! require("ggplot2") ) {
+  install.packages("ggplot2")
+  library(ggplot2)
+}
+if(! require("devtools") ) {
+  install.packages("devtools")
+  library(devtools)
+}
+if(! require("plotly") ) {
+  devtools::install_github('hadley/ggplot2')
+  install.packages("plotly")
+  library(plotly)
+}
+if(! require("plyr") ) {
+  install.packages("plyr")
+  library(plyr)
+}
+```
+
+```{r}
+data(afcon)
+oid <- order(afcon$id)
+```
+
+```{r}
+gg.totcon <- ggplot(afcon.extra) + aes(x=x, y=y, color=totcon, label=name) + geom_point() + 
+ coord_fixed() + scale_color_distiller(palette="YlOrRd", direction = 1) + theme_minimal()
+```
+
+```{r}
+ggplotly(gg.totcon)
+```
+
+```{r}
+nb2df <- function(nb, coords){
+  x <- coords[, 1]
+  y <- coords[, 2]
+  n <- length(nb)
+
+  cardnb <- card(nb)
+  i <- rep(1:n, cardnb)
+  j <- unlist(nb)
+  return(data.frame(x=x[i], xend=x[j],
+                    y=y[i], yend=y[j]))
+  }
+```
+
+```{r}
+af.nb.df <- nb2df(paper.nb, afxy)
+```
+
+
+```{r}
+resI <- localmoran(afcon$totcon, nb2listw(paper.nb))
+printCoefmat(data.frame(resI[oid,], row.names=afcon$name[oid]),
+ check.names=FALSE, p.adjust.method="bonferroni")
+```
+
+
+```{r}
+afcon.extra <- afcon
+afcon.extra$localI <- resI[,1]
+```
+
+```{r}
+afcon.extra$localIlevel <- cut(afcon.extra$localI,  c(-Inf,-1,-0.3,0,0.3,1,Inf))
+gg.localI <- ggplot(afcon.extra) + aes(x=x, y=y, color=localIlevel) +  
+  geom_point(aes(text=paste(name, localI), size=2)) + scale_color_brewer(palette="RdYlBu", direction = -1) +
+  geom_segment(data = af.nb.df, aes(x=x, xend=xend, y=y, yend=yend), color="grey") + coord_fixed()  + theme_minimal()
+```
+
+```{r}
+ggplotly(gg.localI)
+```
+
+
+
+
+```{r}
+geom_segment(data = af.nb.df, aes(x=x, xend=xend, y=y, yend=yend), color="grey")
+```
+
