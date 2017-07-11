@@ -90,8 +90,35 @@ ggplotly(gg.localI)
 
 
 
+```{r}
+afcon.extra$localG <- as.numeric(localG(afcon$totcon, nb2listw(paper.nb)))
+```
 
 ```{r}
-geom_segment(data = af.nb.df, aes(x=x, xend=xend, y=y, yend=yend), color="grey")
+gg.localG <- ggplot(afcon.extra) + aes(x=x, y=y, color=scale(localG, center = TRUE, scale = TRUE)) +  
+  geom_point(aes(text=paste(name, "localG:", localG), size=2)) + scale_color_distiller(palette="OrRd", direction = 1) +
+  geom_segment(data = af.nb.df, aes(x=x, xend=xend, y=y, yend=yend), color="grey") + coord_fixed()  + theme_minimal()
+```
+
+```{r}
+ggplotly(gg.localG)
+```
+
+
+
+```{r}
+afcon.extra$lag.totcon <- lag.listw(nb2listw(paper.nb),afcon$totcon )
+```
+
+
+```{r}
+gg.lag <- ggplot(afcon.extra) + aes(x=x, y=y, color=lag.totcon) +  
+  geom_point(aes(text=paste(name, "totcon:", totcon, "totcon décallé:", lag.totcon), size=2)) + scale_color_distiller(palette="OrRd", direction = 1) +
+  geom_segment(data = af.nb.df, aes(x=x, xend=xend, y=y, yend=yend), color="grey") + coord_fixed()  + theme_minimal()
+```
+
+```{r}
+ggplotly(gg.lag)
+```
 ```
 

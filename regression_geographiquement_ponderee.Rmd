@@ -1,0 +1,91 @@
+---
+title: "Régression géographiquement pondérée"
+output: html_notebook
+---
+
+```{r, message=FALSE}
+if(! require("RColorBrewer") ) {
+  install.packages("RColorBrewer")
+  library(RColorBrewer)
+}
+if(! require("spgwr") ) {
+  install.packages("spgwr")
+  library(spgwr)
+}
+if(! require("ggplot2") ) {
+  install.packages("ggplot2")
+  library(ggplot2)
+}
+if(! require("devtools") ) {
+  install.packages("devtools")
+  library(devtools)
+}
+if(! require("plotly") ) {
+  devtools::install_github('hadley/ggplot2')
+  install.packages("plotly")
+  library(plotly)
+}
+```
+
+```{r}
+data(columbus)
+```
+
+### Régression linéaire multiple
+
+```{r}
+col.lm <- lm(crime ~ income + housing, data=columbus)
+summary(col.lm)
+```
+
+```{r}
+col.bw <- gwr.sel(crime ~ income + housing, data=columbus,
+  coords=cbind(columbus$x, columbus$y))
+col.bw
+```
+
+```{r}
+col.gauss <- gwr(crime ~ income + housing, data=columbus,
+  coords=cbind(columbus$x, columbus$y), bandwidth=col.bw, hatmatrix=TRUE)
+col.gauss
+```
+
+```{r}
+col.d <- gwr.sel(crime ~ income + housing, data=columbus,
+  coords=cbind(columbus$x, columbus$y), gweight=gwr.bisquare)
+col.bisq <- gwr(crime ~ income + housing, data=columbus,
+  coords=cbind(columbus$x, columbus$y), bandwidth=col.d, 
+  gweight=gwr.bisquare, hatmatrix=TRUE)
+col.bisq
+```
+
+
+```{r}
+gg.coef.income <- ggplot(columbus, aes(x=x, y=y)) + geom_point(aes(color=as.data.frame(col.gauss$SDF)$income)) + 
+  scale_color_distiller(palette = "Purples", name = "Income coefficient") + coord_equal() + theme_minimal()
+```
+
+```{r}
+ggplotly(gg.coef.income)
+```
+
+```{r}
+gg.coef.housing <- ggplot(columbus, aes(x=x, y=y)) + geom_point(aes(color=as.data.frame(col.gauss$SDF)$housing)) + 
+  scale_color_distiller(palette = "OrRd", name = "Housing coefficient") + coord_equal() + theme_minimal()
+```
+
+```{r}
+ggplotly(gg.coef.housing)
+```
+
+```{r}
+gg.coef.intercept <- ggplot(columbus, aes(x=x, y=y)) + geom_point(aes(color=as.data.frame(col.gauss$SDF)$X.Intercept.)) + 
+  scale_color_distiller(palette = "Greys", name = "Intercept") + coord_equal() + theme_minimal()
+```
+
+```{r}
+ggplotly(gg.coef.intercept)
+```
+
+
+
